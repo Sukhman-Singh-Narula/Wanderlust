@@ -30,7 +30,7 @@ app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
 
-
+const dbURL = process.env.ATLASDB_URL;
 const store = MongoStore.create({
     mongoUrl: dbURL,
     crypto: {
@@ -72,7 +72,7 @@ passport.deserializeUser(User.deserializeUser());
 
 // connect with mongo
 
-const dbURL = process.env.ATLASDB_URL;
+
 
 async function main() {
     await mongoose.connect(dbURL);
