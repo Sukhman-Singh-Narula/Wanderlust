@@ -185,4 +185,18 @@
         <div class="" id="map"></div>
       </div>
       </div>
-      <script src="/js/maps.js"></script>
+      <script>
+        let maToken = "<%= process.env.MAP_TOKEN %>";
+        mapboxgl.accessToken = maToken;
+        const map = new mapboxgl.Map({
+          container: 'map', // container ID
+          style: "mapbox://styles/mapbox/streets-v12",
+          center: coordinates, // starting position [lng, lat]
+          zoom: 9, // starting zoom
+        });
+        console.log("map");
+
+        const marker = new mapboxgl.Marker({ color: "black" })
+          .setLngLat(coordinates)
+          .addTo(map);
+      </script>
